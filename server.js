@@ -118,6 +118,7 @@ MongoClient.connect(config.db, function(err, db) {
     // Register templating engine
     app.engine(".html", consolidate.swig);
     app.set("view engine", "html");
+    app.set('port', process.env.PORT || 8080);
     app.set("views", __dirname + "/app/views");
     app.use(express.static(__dirname + "/app/assets"));
 
@@ -143,8 +144,8 @@ MongoClient.connect(config.db, function(err, db) {
     });
 
     // Insecure HTTP connection
-    http.createServer(app).listen(config.port, function() {
-        console.log("Express http server listening on port " + config.port);
+    http.createServer(app).listen(app.get('port'), function() {
+        console.log("Express http server listening on port " + app.get('port'));
     });
 
     /*
