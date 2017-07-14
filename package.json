@@ -21,8 +21,6 @@
     "underscore": "^1.8.3"
   },
   "comments": {
-    "//": "do not upgrade the marked package version it is set by purpose",
-    "//": "to be a vulnerable package to demonstrate an xss introduced through",
     "//": "a9 insecure components"
   },
   "engines": {
@@ -30,7 +28,7 @@
     "npm": "2.15.x"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node artifacts/db-reset.js &&node server.js",
     "test": "node node_modules/grunt-cli/bin/grunt test",
     "db:seed": "grunt db-reset",
     "precommit": "grunt precommit"
